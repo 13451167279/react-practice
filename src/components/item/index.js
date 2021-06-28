@@ -11,13 +11,15 @@ export class Item extends Component {
   };
   // 删除事件
   handleDelete = (id) => {
-    this.props.deleteTodo(id);
+    if (window.confirm('Are you sure you want to delete')) {
+      this.props.deleteTodo(id);
+    }
   };
   // 点击复选框，改变复选框的状态
   update = (id) => {
     return (e) => {
-    this.props.updateDone(id, e.target.checked);
-    }
+      this.props.updateDone(id, e.target.checked);
+    };
   };
   render() {
     // 接收item的传值

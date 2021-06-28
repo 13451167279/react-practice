@@ -3,7 +3,9 @@ import './index.css';
 
 export default class Footer extends Component {
   clearAllTodos = () => {
-    this.props.deleteAllTodos();
+    if (window.confirm('Are you sure you want to delete')) {
+      this.props.deleteAllTodos();
+    }
   };
   selectAllTodos = (e) => {
     this.props.updateAllDone(e.target.checked);
