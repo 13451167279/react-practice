@@ -8,12 +8,33 @@ export class Search extends Component {
       current: { value: keyword },
     } = this.keyword;
 
-    axios.get(`https://api.github.com/search/users?q=${keyword}`).then(
+    /*     axios.get(`https://api.github.com/search/users?q=${keyword}`).then(
       (res) => {
         this.props.getUserList(res.data.items);
       },
       (err) => {
         console.log(err);
+      }
+    ); */
+
+    this.props.updateAppState({
+      isFirst: false,
+      isLoding: true,
+    });
+
+    axios.get(`https://api.github.com/search/1users?q=${keyword}`).then(
+      (res) => {
+        this.props.updateAppState({
+          isLoding: false,
+          users: res.data.items,
+        });
+      },
+      (err) => {
+        console.log(err);
+        this.props.updateAppState({
+          isLoding: false,
+          err,
+        });
       }
     );
   };
