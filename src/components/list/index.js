@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 import './index.css';
+import PubSub from 'pubsub-js';
 
 export class List extends Component {
+  state = {
+    users: [],
+    isFirst: true, //是否为第一次打开页面
+    isLoding: false, //加载中
+    err: '', //错误信息
+  };
+  componentDidMount() {
+    this.psEvent = PubSub.subscribe('pubsubEvent', (msg, data) => {
+      this.setState(data);
+    });
+  }
+  componentWillUnmount() {
+    // 取消订阅
+    PubSub.unsubscribe(this.psEvent);
+  }
+
   render() {
-    const { users, isLoding, isFirst, err } = this.props;
+    const { users, isLoding, isFirst, err } = this.state;
     return (
       <div className="row">
         {isFirst ? (

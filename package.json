@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "pubsub-js": "^1.9.3"
   }
 }

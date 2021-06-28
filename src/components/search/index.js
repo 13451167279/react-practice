@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PubSub from 'pubsub-js';
 
 export class Search extends Component {
   keyword = React.createRef();
@@ -17,21 +18,20 @@ export class Search extends Component {
       }
     ); */
 
-    this.props.updateAppState({
+    PubSub.publish('pubsubEvent', {
       isFirst: false,
       isLoding: true,
     });
 
-    axios.get(`https://api.github.com/search/1users?q=${keyword}`).then(
+    axios.get(`https://api.github.com/search/users?q=${keyword}`).then(
       (res) => {
-        this.props.updateAppState({
+        PubSub.publish('pubsubEvent', {
           isLoding: false,
           users: res.data.items,
         });
       },
       (err) => {
-        console.log(err);
-        this.props.updateAppState({
+        PubSub.publish('pubsubEvent', {
           isLoding: false,
           err,
         });
