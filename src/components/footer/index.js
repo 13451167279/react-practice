@@ -3,6 +3,7 @@ import './index.css';
 
 export default class Footer extends Component {
   clearAllTodos = () => {
+    // 是否删除
     if (window.confirm('Are you sure you want to delete')) {
       this.props.deleteAllTodos();
     }
