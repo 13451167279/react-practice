@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import qs from 'querystring';
+// import qs from 'querystring';
 
 const detailData = [
   { id: '001', content: '我是消息一，你好中国' },
