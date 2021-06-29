@@ -24,6 +24,7 @@ export default class Message extends Component {
                 {/* searc参数传递 */}
                 {/* <Link to={`/home/message/detail/?id=${mes.id}&title=${mes.title}`}>{mes.title}</Link> */}
                 <Link
+                  // replace// replace效果
                   to={{
                     pathname: '/home/message/detail',
                     state: { id: mes.id, title: mes.title },
