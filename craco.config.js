@@ -19,7 +19,7 @@ module.exports = {
       options: {
         lessLoaderOptions: {
           lessOptions: {
-            modifyVars: { '@primary-color': '#ff3412' },
+            modifyVars: { '@primary-color': 'yellow' },
             // 设置自定义主题样式
             // 配置参数：https://ant.design/docs/react/customize-theme-cn
             javascriptEnabled: true,
