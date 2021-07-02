@@ -1,4 +1,4 @@
-const { override, addLessLoader, fixBabelImports } = require('customize-cra');
+const { override, addLessLoader, fixBabelImports, addPostcssPlugins } = require('customize-cra');
 
 module.exports = function override(config, env) {
   // do stuff with the webpack config...
@@ -17,5 +17,7 @@ module.exports = override(
     libraryName: 'antd-mobile',
     libraryDirectory: 'es',
     style: true,
-  })
+  }),
+  // 按照设计稿计算根节点的样式
+  addPostcssPlugins([require('postcss-px2rem')({ remUnit: '37.5' })])
 );

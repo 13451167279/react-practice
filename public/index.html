@@ -22,12 +22,18 @@
     if (!window.Promise) {
       document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
     }
-  </script>
-  <style>
-    .myactive {
-      background-color: orange !important;
+    function adapter() {
+      // 获取手机横向的物理像素
+      const dip = document.documentElement.clientWidth;
+      // 计算跟字体的大小
+      const rootFontSize = dip / 10;
+      // 设置字体大小
+      document.documentElement.style.fontSize = rootFontSize + 'px';
     }
-  </style>
+    adapter();
+    window.onresize = adapter;
+  </script>
+
 </head>
 
 <body>
